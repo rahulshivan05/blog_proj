@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+Blog Home
+{% endblock title %}
+
+{% block content %}
+     {% for post in posts %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content|safe|truncatechars:100 }}</p>
+          </div>
+        </article>
+    {% endfor %}
+    <h2>Blog Home</h2>
+    <p>Platform Details: {{info}} </p>
+    <p>System name: {{info2}}</p>
+    {{info3}}<br>
+    {{info4}}
+
+    771cd83d22d34ad49dfadeef6f79968d
+
+
+    
+ {% endblock content %}

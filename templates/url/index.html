@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Url Shortner Page
+{% endblock title %}
+
+{% block content %}
+<main>
+<div class="container">
+	<center><h1>Url shortner Page</h1></center>
+	<form action="" id="post-form" method="POST" enctype="">
+		{% csrf_token %}
+		<input type="text" id="link" name="link" class="form-control" placeholder="Enter Your Url"><br>
+		<center><div class="buttons">
+			<button type="submit" class="btn btn-primary" id="shortner">Short Url</button>
+		</div></center>
+	</form>
+	
+	<section id="section"><h2></h2></section>
+</div>
+</main>
+
+<script type="text/javascript">
+	$(document).on('submit', '#post-form', function (e) {
+		e.preventDefault();
+
+		$.ajax({
+			type: 'POST',
+			url: '/url/create',
+			data: {
+				link: $('#link').val(),
+				csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+			},
+			success: function (data) {
+				$('h2').html('127.0.0.1:8000/url/'+data)
+			}
+		});
+	});
+</script>
+{% endblock content %}

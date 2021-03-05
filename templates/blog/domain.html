@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+Domain Info Page
+{% endblock title %}
+
+{% block content %}
+<center><h3>Enter Domain Name for information</h3></center>
+<div class="container">
+	<form>
+	  <div class="form-group">
+	    <label for="">Domain Name</label>
+	    <input type="domain" name="domain" class="form-control" placeholder="Enter Domain Name">
+	  </div>
+	  <button type="submit" class="btn btn-primary">Check</button>
+	</form>
+	<br>
+	<hr>
+	{{info}}
+</div>
+
+
+{% endblock content %}
